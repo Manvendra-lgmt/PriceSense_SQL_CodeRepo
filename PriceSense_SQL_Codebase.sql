@@ -1,12 +1,4 @@
--- ============================================================
---  PROJECT PRICESENSE — SQL Technical Codebase
---  D2C Nutrition Brand: High-Protein Snack Pricing Intelligence
---  Prepared for: IIT Guwahati E-Cell
--- ============================================================
-
--- ============================================================
 --  PHASE 0: DATA CLEANING & STAGING
--- ============================================================
 
 -- 0.1 Clean transactions: remove returns, nulls, extreme outliers
 CREATE OR REPLACE VIEW v_clean_transactions AS
@@ -85,9 +77,7 @@ WHERE c.persona IS NOT NULL
   AND c.persona != '';
 
 
--- ============================================================
 --  PHASE 1: SENSITIVITY FRAMEWORK — PRICE THRESHOLDS
--- ============================================================
 
 -- 1.1 Demand distribution across price bands
 --     Purpose: identify where demand drops significantly
@@ -206,9 +196,7 @@ GROUP BY 1, 2
 ORDER BY persona, MIN(price);
 
 
--- ============================================================
 --  PHASE 2: CONTEXTUAL OPTIMIZATION
--- ============================================================
 
 -- 2.1 Product attribute premium: which claims command higher prices?
 SELECT
